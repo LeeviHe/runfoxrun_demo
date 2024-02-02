@@ -9,6 +9,11 @@ public class playerMovement : MonoBehaviour
     // public variant for left or right movementspeed
     public float leftRightSpeed = 4;
     // Start is called before the first frame update
+    public bool isJumping = false;
+    public bool comingDown = false;
+    public GameObject playerObject;
+    public float jumpPower = 3;
+
     void Start()
     {
         
@@ -39,6 +44,44 @@ public class playerMovement : MonoBehaviour
             }
             
         }
-
+        if (Input.GetKey(KeyCode.W))
+        {
+            if(isJumping == false)
+            {
+                isJumping = true;
+                //playerObject.GetComponent<Animator>().Play("Fox_Jump");
+                playerObject.GetComponent<Animator>().SetBool("isJumping", true);
+                playerObject.GetComponent<Animator>().SetBool("comingDown", false);
+                StartCoroutine(JumpSequence());
+            }
+        }
+        if(isJumping == true)
+        {
+            if(comingDown == false)
+            {
+                
+                transform.Translate(Vector3.up * Time.deltaTime * jumpPower,Space.World);
+            }
+            if (comingDown == true)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * -jumpPower, Space.World);
+                
+                
+            }
+        }
+      
+    }
+    IEnumerator JumpSequence()
+    {
+        yield return new WaitForSeconds(0.45f);
+        comingDown = true;
+        playerObject.GetComponent<Animator>().SetBool("comingDown", true);
+        playerObject.GetComponent<Animator>().SetBool("isJumping", false);
+        yield return new WaitForSeconds(0.45f);
+        isJumping = false;
+        comingDown = false;
+        playerObject.GetComponent<Animator>().SetBool("isMoving",true);
+        playerObject.GetComponent<Animator>().SetBool("isJumping", false);
+        playerObject.GetComponent<Animator>().SetBool("comingDown", false);
     }
 }
