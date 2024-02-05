@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class playerMovement : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class playerMovement : MonoBehaviour
     public bool isJumping = false;
     public bool comingDown = false;
     public GameObject playerObject;
+    public GameObject thePlayer;
     public float jumpPower = 3;
 
     void Start()
@@ -83,5 +85,11 @@ public class playerMovement : MonoBehaviour
         playerObject.GetComponent<Animator>().SetBool("isMoving",true);
         playerObject.GetComponent<Animator>().SetBool("isJumping", false);
         playerObject.GetComponent<Animator>().SetBool("comingDown", false);
+    }
+
+    private void OnTriggerEnter( Collider other ) {
+        this.gameObject.GetComponent<BoxCollider>().enabled = false;
+        playerObject.GetComponent<Animator>().Play("Fox_Falling");
+        thePlayer.GetComponent<playerMovement>().enabled = false;
     }
 }
