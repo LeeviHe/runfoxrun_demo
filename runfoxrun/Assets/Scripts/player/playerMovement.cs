@@ -101,19 +101,18 @@ public class playerMovement : MonoBehaviour
     private void OnTriggerEnter( Collider other ) {
         //Check if triggering object is coin or acorn -> should they take damage
         if (other.gameObject.CompareTag("Collectable")) {
-            Debug.Log("collectable collected");
+            Debug.Log("Collectable collected!");
         } else {
             //If player has health -> hit animation and -1 health
-            if (UIControl.playerHealth > 1) {
+            if (Health.health > 1) {
                 playerObject.GetComponent<Animator>().Play("Hit");
                 other.gameObject.SetActive(false);
                 Debug.Log("-1 hp");
-                UIControl.playerHealth--;
-                Debug.Log(UIControl.playerHealth);
+                Health.health--;
                 StartCoroutine(HitSequence());
             } // player doesn't have enough health -> player loses
             else {
-                UIControl.playerHealth = 0;
+                Health.health = 0;
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 playerObject.GetComponent<Animator>().Play("Fox_Falling");
             }
