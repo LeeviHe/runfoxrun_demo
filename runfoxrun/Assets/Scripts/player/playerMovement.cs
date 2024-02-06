@@ -89,15 +89,20 @@ public class playerMovement : MonoBehaviour
         playerObject.GetComponent<Animator>().SetBool("isJumping", false);
         playerObject.GetComponent<Animator>().SetBool("comingDown", false);
     }
-
+  IEnumerator HitSequence()
+    {
+        playerObject.GetComponent<Animator>().Play("Hit");
+        yield return new WaitForSeconds(0.65f);
+        playerObject.GetComponent<Animator>().Play("Run");
+    }
     private void OnTriggerEnter( Collider other ) {
         if (other.gameObject.name != foxCoin.gameObject.name) {
             if (health > 1) {
-                playerObject.GetComponent<Animator>().Play("Hit");
                 other.gameObject.SetActive(false);
                 Debug.Log("-1 hp");
                 health--;
                 Debug.Log(health);
+                StartCoroutine(HitSequence());
             } else {
                 Debug.Log("död");
                 this.gameObject.GetComponent<BoxCollider>().enabled = false;
