@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CollectCoin : MonoBehaviour {
 
-
     void OnTriggerEnter( Collider other ) {
-        this.gameObject.SetActive( false );
+            UIControl.coinCount += 1;
+            this.gameObject.SetActive( false );
     }
 }
