@@ -20,6 +20,7 @@ public class playerMovement : MonoBehaviour
     public float jumpPower = 3;
     public GameObject foxCoinPrefab;
     public GameObject acornPrefab;
+    public bool slow=false;
 
     void Start()
     {
@@ -76,7 +77,13 @@ public class playerMovement : MonoBehaviour
                 
             }
         }
-      
+        if (slow == true)
+        {
+            slow = false;
+            Debug.Log("SLOW");
+            StartCoroutine(SlowSequence());
+        }
+
     }
     IEnumerator JumpSequence()
     {
@@ -93,11 +100,24 @@ public class playerMovement : MonoBehaviour
     }
   IEnumerator HitSequence()
     {
+      
         playerObject.GetComponent<Animator>().Play("Hit");
         yield return new WaitForSeconds(0.65f);
         playerObject.GetComponent<Animator>().Play("Run");
+       
     }
-    
+    IEnumerator SlowSequence()
+    {
+
+        moveSpeed = 1;
+       
+        yield return new WaitForSeconds(3f);
+        moveSpeed = 3;
+        
+        Debug.Log("SLow loppuu");
+
+    }
+
     private void OnTriggerEnter( Collider other ) {
         //Check if triggering object is coin or acorn -> should they take damage
         if (other.gameObject.CompareTag("Collectable")) {
@@ -109,6 +129,7 @@ public class playerMovement : MonoBehaviour
                 other.gameObject.SetActive(false);
                 Debug.Log("-1 hp");
                 Health.health--;
+                slow = true;
                 StartCoroutine(HitSequence());
             } // player doesn't have enough health -> player loses
             else {
