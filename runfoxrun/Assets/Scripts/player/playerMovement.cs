@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -15,6 +16,8 @@ public class playerMovement : MonoBehaviour
     public GameObject playerObject;
     public GameObject thePlayer;
     public float jumpPower = 3;
+    public GameObject foxCoin;
+    private int health = 3;
 
     void Start()
     {
@@ -86,10 +89,28 @@ public class playerMovement : MonoBehaviour
         playerObject.GetComponent<Animator>().SetBool("isJumping", false);
         playerObject.GetComponent<Animator>().SetBool("comingDown", false);
     }
-
+  IEnumerator HitSequence()
+    {
+        playerObject.GetComponent<Animator>().Play("Hit");
+        yield return new WaitForSeconds(0.65f);
+        playerObject.GetComponent<Animator>().Play("Run");
+    }
     private void OnTriggerEnter( Collider other ) {
-        this.gameObject.GetComponent<BoxCollider>().enabled = false;
-        playerObject.GetComponent<Animator>().Play("Fox_Falling");
-        thePlayer.GetComponent<playerMovement>().enabled = false;
+        if (other.gameObject.name != foxCoin.gameObject.name) {
+            if (health > 1) {
+                other.gameObject.SetActive(false);
+                Debug.Log("-1 hp");
+                health--;
+                Debug.Log(health);
+                StartCoroutine(HitSequence());
+            } else {
+                Debug.Log("död");
+                this.gameObject.GetComponent<BoxCollider>().enabled = false;
+                playerObject.GetComponent<Animator>().Play("Fox_Falling");
+                thePlayer.GetComponent<playerMovement>().enabled = false;
+            }
+
+        }
+        
     }
 }
