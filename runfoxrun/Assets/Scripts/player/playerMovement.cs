@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -16,8 +18,8 @@ public class playerMovement : MonoBehaviour
     public GameObject playerObject;
     public GameObject thePlayer;
     public float jumpPower = 3;
-    public GameObject foxCoin;
-    private int health = 3;
+    public GameObject foxCoinPrefab;
+    public GameObject acornPrefab;
 
     void Start()
     {
@@ -95,22 +97,26 @@ public class playerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.65f);
         playerObject.GetComponent<Animator>().Play("Run");
     }
+    
     private void OnTriggerEnter( Collider other ) {
-        if (other.gameObject.name != foxCoin.gameObject.name) {
-            if (health > 1) {
+        //Check if triggering object is coin or acorn -> should they take damage
+        if (other.gameObject.CompareTag("Collectable")) {
+            Debug.Log("collectable collected");
+        } else {
+            //If player has health -> hit animation and -1 health
+            if (UIControl.playerHealth > 1) {
+                playerObject.GetComponent<Animator>().Play("Hit");
                 other.gameObject.SetActive(false);
                 Debug.Log("-1 hp");
-                health--;
-                Debug.Log(health);
+                UIControl.playerHealth--;
+                Debug.Log(UIControl.playerHealth);
                 StartCoroutine(HitSequence());
-            } else {
-                Debug.Log("död");
-                this.gameObject.GetComponent<BoxCollider>().enabled = false;
-                playerObject.GetComponent<Animator>().Play("Fox_Falling");
+            } // player doesn't have enough health -> player loses
+            else {
+                UIControl.playerHealth = 0;
                 thePlayer.GetComponent<playerMovement>().enabled = false;
+                playerObject.GetComponent<Animator>().Play("Fox_Falling");
             }
-
-        }
-        
-    }
+        } 
+    }       
 }
