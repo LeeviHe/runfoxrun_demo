@@ -602,6 +602,7 @@ GameObject:
   - component: {fileID: 244424437}
   - component: {fileID: 244424438}
   - component: {fileID: 244424439}
+  - component: {fileID: 244424440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -632,6 +633,8 @@ MonoBehaviour:
     type: 3}
   acornPrefab: {fileID: 921298069229963658, guid: 4df612986daf6384cbd02d834769750c,
     type: 3}
+  isHitted: 0
+  newHit: 0
 --- !u!4 &244424436
 Transform:
   m_ObjectHideFlags: 0
@@ -716,6 +719,20 @@ MonoBehaviour:
   - {fileID: 1700321388}
   fullHeart: {fileID: 21300000, guid: 34adb3d13ac348d40a67dc286b868ae5, type: 3}
   emptyHeart: {fileID: 21300000, guid: e604fd73590d295459bffae88c11a93e, type: 3}
+--- !u!114 &244424440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244424434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a16d1da4921bd4458785aa5ae846afb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  player: {fileID: 244424434}
 --- !u!1001 &252038747
 PrefabInstance:
   m_ObjectHideFlags: 0
