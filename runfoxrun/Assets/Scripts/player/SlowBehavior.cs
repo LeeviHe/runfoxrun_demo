@@ -6,6 +6,7 @@ public class SlowBehavior : MonoBehaviour
 {
     public float timer = 0f;
     public GameObject player;
+    public GameObject anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,8 @@ public class SlowBehavior : MonoBehaviour
         {
             timer += Time.deltaTime;
             player.GetComponent<playerMovement>().moveSpeed = 1;
+            player.GetComponent<playerMovement>().leftRightSpeed = 1;
+            anim.GetComponent<Animator>().SetFloat("speed", 0.5f);
             if (player.GetComponent<playerMovement>().newHit==true)
             {
                 timer = 0f;
@@ -28,7 +31,9 @@ public class SlowBehavior : MonoBehaviour
             if (timer > 3f)
             {
                 player.GetComponent<playerMovement>().moveSpeed = 3;
+                player.GetComponent<playerMovement>().leftRightSpeed = 3;
                 player.GetComponent<playerMovement>().isHitted = false;
+                anim.GetComponent<Animator>().SetFloat("speed", 1f);
                 timer = 0f;
                 Debug.Log("slow poistui");
 

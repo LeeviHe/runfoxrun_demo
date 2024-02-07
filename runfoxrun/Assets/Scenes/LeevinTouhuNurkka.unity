@@ -733,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: 0
   player: {fileID: 244424434}
+  anim: {fileID: 1000531770}
 --- !u!1001 &252038747
 PrefabInstance:
   m_ObjectHideFlags: 0
