@@ -98,7 +98,14 @@ public class playerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.45f);
         isJumping = false;
         comingDown = false;
-        playerObject.GetComponent<Animator>().SetBool("isMoving",true);
+        if (thePlayer.GetComponent<SlowBehavior>().slowAdded)
+        {
+           playerObject.GetComponent<Animator>().SetBool("isSlowed", true);
+        }
+        else
+        {
+            playerObject.GetComponent<Animator>().SetBool("isMoving", true);
+        }
         playerObject.GetComponent<Animator>().SetBool("isJumping", false);
         playerObject.GetComponent<Animator>().SetBool("comingDown", false);
     }

@@ -49,11 +49,12 @@ public class SlowBehavior : MonoBehaviour
             {
                 
                 player.GetComponent<playerMovement>().leftRightSpeed = 3;
-                anim.GetComponent<Animator>().SetFloat("speed", 1f);    
-
+                anim.GetComponent<Animator>().SetFloat("speed", 1f);
+                player.GetComponent<playerMovement>().isHitted = false;
                 anim.GetComponent<Animator>().SetBool("isSlowed", false);
                 anim.GetComponent<Animator>().SetBool("isMoving", true);
-
+                timer = 0f;
+                slowAdded = false;
                 Debug.Log("slowin aikana otettu power up");
             }
             if (timer > 3f && player.GetComponent<PowerUpBehavior>().isSpeedActive)
