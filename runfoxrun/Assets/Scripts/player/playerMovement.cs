@@ -23,6 +23,7 @@ public class playerMovement : MonoBehaviour
     public bool isHitted = false;
     public bool newHit = false;
 
+
     void Start()
     {
         
@@ -31,15 +32,20 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
+        
         //  fox now will run forward automatically
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed,Space.World);
+
         // input to go left
         if (Input.GetKey(KeyCode.A)) 
         {
             // will check if you are too close to level boundaries this is for left side
             if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
             {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);    
             }
             
         }
@@ -78,6 +84,7 @@ public class playerMovement : MonoBehaviour
                 
             }
         }
+        
 
     }
     IEnumerator JumpSequence()
@@ -100,7 +107,6 @@ public class playerMovement : MonoBehaviour
         playerObject.GetComponent<Animator>().Play("Run");
 
     }
-
 
     private void OnTriggerEnter( Collider other ) {
         //Check if triggering object is coin or acorn -> should they take damage

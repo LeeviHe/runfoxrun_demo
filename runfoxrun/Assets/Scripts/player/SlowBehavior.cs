@@ -18,11 +18,15 @@ public class SlowBehavior : MonoBehaviour
     {
         if(player.GetComponent<playerMovement>().isHitted == true)
         {
+            
             timer += Time.deltaTime;
             player.GetComponent<playerMovement>().moveSpeed = 1;
             player.GetComponent<playerMovement>().leftRightSpeed = 1;
             anim.GetComponent<Animator>().SetFloat("speed", 0.5f);
-            if (player.GetComponent<playerMovement>().newHit==true)
+            anim.GetComponent<Animator>().SetBool("isSlowed", true);
+            anim.GetComponent<Animator>().SetBool("isMoving", false);
+
+            if (player.GetComponent<playerMovement>().newHit == true)
             {
                 timer = 0f;
                 player.GetComponent<playerMovement>().newHit = false;
@@ -35,6 +39,10 @@ public class SlowBehavior : MonoBehaviour
                 player.GetComponent<playerMovement>().isHitted = false;
                 anim.GetComponent<Animator>().SetFloat("speed", 1f);
                 timer = 0f;
+
+                anim.GetComponent<Animator>().SetBool("isSlowed", false);
+                anim.GetComponent<Animator>().SetBool("isMoving", true);
+                
                 Debug.Log("slow poistui");
 
             }
