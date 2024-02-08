@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 
 public class playerMovement : MonoBehaviour
 {
+    public Transform cameraRootTransform; //player camera root
+
     // puclic variant for movementspeed can be changed in unity editor
     public float moveSpeed = 3;
     // public variant for left or right movementspeed
@@ -32,33 +34,30 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float rotateSpeed = 10f;
+        float rotationAngle = 0f;
 
-
-
-        
         //  fox now will run forward automatically
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed,Space.World);
 
-        // input to go left
-        if (Input.GetKey(KeyCode.A)) 
-        {
-            // will check if you are too close to level boundaries this is for left side
-            if (this.gameObject.transform.position.x > LevelBoundary.leftSide)
-            {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed);    
-            }
-            
+        // input to go left and will check if you are too close to level boundaries this is for left side
+        if (Input.GetKey(KeyCode.A) && (this.gameObject.transform.position.x > LevelBoundary.leftSide)) {
+                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed, Space.World);
+                rotationAngle = -45f;
+        } 
+        //moving right + will check if you are too close to level boundaries this is for right side
+        else if (Input.GetKey(KeyCode.D) && (this.gameObject.transform.position.x < LevelBoundary.rightSide)) {
+                transform.Translate(Vector3.right * Time.deltaTime * leftRightSpeed, Space.World);
+                rotationAngle = 45f;
         }
-        // -1 will invert the number and we are moving right
-        if (Input.GetKey(KeyCode.D))
-        {
-            // will check if you are too close to level boundaries this is for right side
-            if(this.gameObject.transform.position.x < LevelBoundary.rightSide)
-            {
-                transform.Translate(Vector3.left * Time.deltaTime * leftRightSpeed * -1);
-            }
-            
-        }
+
+        Quaternion targetRotation = Quaternion.Euler(0, rotationAngle, 0);
+
+        // Smoothly rotate towards the target rotation
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
+
+        cameraRootTransform.rotation = Quaternion.Euler (cameraRootTransform.localEulerAngles.x, 0f, 0f);
+
         if (Input.GetKey(KeyCode.W))
         {
             if(isJumping == false)
@@ -122,27 +121,28 @@ public class playerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Collectable")) {
             Debug.Log("Collectable collected!");
         } else {
-            //If player has health -> hit animation and -1 health
-            if (Health.health > 1) {
-                playerObject.GetComponent<Animator>().Play("Hit");
-                other.gameObject.SetActive(false);
-                Debug.Log("-1 hp");
-                Health.health--;
-                if (isHitted==true)
-                {
-                    newHit = true;
+            if (other.gameObject.CompareTag("Obstacle")) {
+                //If player has health -> hit animation and -1 health
+                if (Health.health > 1) {
+                    playerObject.GetComponent<Animator>().Play("Hit");
+                    other.gameObject.SetActive(false);
+                    Debug.Log("-1 hp");
+                    Health.health--;
+                    if (isHitted == true) {
+                        newHit = true;
+                    } else {
+                        isHitted = true;
+                    }
+
+                    StartCoroutine(HitSequence());
+                } // player doesn't have enough health -> player loses
+                else {
+                    Health.health = 0;
+                    thePlayer.GetComponent<playerMovement>().enabled = false;
+                    playerObject.GetComponent<Animator>().Play("Fox_Falling");
                 }
-                else
-                {
-                    isHitted= true;
-                }
-                
-                StartCoroutine(HitSequence());
-            } // player doesn't have enough health -> player loses
-            else {
-                Health.health = 0;
-                thePlayer.GetComponent<playerMovement>().enabled = false;
-                playerObject.GetComponent<Animator>().Play("Fox_Falling");
+            } else {
+                Debug.Log("Empty collision trigger");
             }
         } 
     }       
