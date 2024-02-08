@@ -2017,6 +2017,8 @@ MonoBehaviour:
   timer: 0
   player: {fileID: 785489423}
   anim: {fileID: 235437024}
+  powerUp: {fileID: 75408120}
+  slowAdded: 0
 --- !u!114 &785489425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,7 +2103,7 @@ MonoBehaviour:
   comingDown: 0
   playerObject: {fileID: 235437024}
   thePlayer: {fileID: 785489423}
-  jumpPower: 5
+  jumpPower: 3
   foxCoinPrefab: {fileID: 3199523569651007878, guid: fdb9b4cef52a98744b191134a9e13d00,
     type: 3}
   acornPrefab: {fileID: 921298069229963658, guid: 4df612986daf6384cbd02d834769750c,
@@ -2143,6 +2145,7 @@ MonoBehaviour:
   duration: 5
   speedIncrease: 5
   isSpeedActive: 0
+  baseSpeed: 3
 --- !u!1 &841895732
 GameObject:
   m_ObjectHideFlags: 0
@@ -4424,7 +4427,7 @@ Transform:
   m_GameObject: {fileID: 1891575454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0, z: 1.92}
+  m_LocalPosition: {x: 6.525666, y: 0, z: 9.533756}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

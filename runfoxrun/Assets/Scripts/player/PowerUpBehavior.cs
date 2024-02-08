@@ -9,6 +9,7 @@ public class PowerUpBehavior : MonoBehaviour
     public float duration = 5f;
     public float speedIncrease = 5f;
     public bool isSpeedActive = false;
+    public float baseSpeed = 3;
 
 
     // Update is called once per frame
@@ -18,6 +19,7 @@ public class PowerUpBehavior : MonoBehaviour
         {
             if (!isSpeedActive)
             {
+                Debug.Log("Power up iffissä");
                 ActivateSpeed();
             }
             powerUp.GetComponent<CollectPowerUp>().powerUp = false;
@@ -26,18 +28,20 @@ public class PowerUpBehavior : MonoBehaviour
     }
     void ActivateSpeed()
     {
-    this.gameObject.GetComponent<playerMovement>().moveSpeed +=speedIncrease;
-    isSpeedActive = true;
+        this.gameObject.GetComponent<playerMovement>().moveSpeed = this.gameObject.GetComponent<playerMovement>().moveSpeed + speedIncrease;
+        isSpeedActive = true;
         animatio.GetComponent<Animator>().SetFloat("speed", 1.5f);
-    Debug.Log("Speediä");
-    StartCoroutine(DeActivateSpeed());
+        Debug.Log("Speediä");
+        Debug.Log(this.gameObject.GetComponent<playerMovement>().moveSpeed);
+        StartCoroutine(DeActivateSpeed());
     }
     IEnumerator DeActivateSpeed()
     {
         yield return new WaitForSeconds(duration);
-        this.gameObject.GetComponent<playerMovement>().moveSpeed -= speedIncrease;
+        this.gameObject.GetComponent<playerMovement>().moveSpeed = baseSpeed;
         animatio.GetComponent<Animator>().SetFloat("speed", 1f);
         isSpeedActive = false;
+        
         Debug.Log("Speedi loppu");
 
     }

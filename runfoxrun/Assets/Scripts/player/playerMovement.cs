@@ -76,12 +76,14 @@ public class playerMovement : MonoBehaviour
             {
                 
                 transform.Translate(Vector3.up * Time.deltaTime * jumpPower,Space.World);
+                transform.Translate(Vector3.forward * Time.deltaTime * 0.5f, Space.World);
             }
             if (comingDown == true)
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -jumpPower, Space.World);
-                
-                
+                transform.Translate(Vector3.forward * Time.deltaTime * 0.5f, Space.World);
+
+
             }
         }
         
