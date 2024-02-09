@@ -24,6 +24,9 @@ public class playerMovement : MonoBehaviour
     public GameObject acornPrefab;
     public bool isHitted = false;
     public bool newHit = false;
+    public AudioSource HitSound;
+    public AudioSource RipSound;
+    public AudioSource JumpSound;
 
 
     void Start()
@@ -66,6 +69,7 @@ public class playerMovement : MonoBehaviour
                 //playerObject.GetComponent<Animator>().Play("Fox_Jump");
                 playerObject.GetComponent<Animator>().SetBool("isJumping", true);
                 playerObject.GetComponent<Animator>().SetBool("comingDown", false);
+                JumpSound.Play();
                 StartCoroutine(JumpSequence());
             }
         }
@@ -125,6 +129,7 @@ public class playerMovement : MonoBehaviour
                 //If player has health -> hit animation and -1 health
                 if (Health.health > 1) {
                     playerObject.GetComponent<Animator>().Play("Hit");
+                    HitSound.Play();
                     other.gameObject.SetActive(false);
                     Debug.Log("-1 hp");
                     Health.health--;
@@ -140,6 +145,7 @@ public class playerMovement : MonoBehaviour
                     Health.health = 0;
                     thePlayer.GetComponent<playerMovement>().enabled = false;
                     playerObject.GetComponent<Animator>().Play("Fox_Falling");
+                    RipSound.Play();
                 }
             } else {
                 Debug.Log("Empty collision trigger");
