@@ -2097,6 +2097,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7647bc3c75c1f7240ba6d462d415ecaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraRootTransform: {fileID: 1594532604}
   moveSpeed: 3
   leftRightSpeed: 3
   isJumping: 0
