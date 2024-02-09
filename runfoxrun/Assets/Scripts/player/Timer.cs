@@ -14,11 +14,16 @@ public class Timer : MonoBehaviour {
     // Call this on update
     public void UpdateTimerUI() {
         // Set timer UI
-        secondsCount += Time.deltaTime;
-        timerText.text = minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00");
-        if (secondsCount >= 60) {
-            secondsCount = 0;
-            minuteCount++;
+        
+        if (Health.health == 0) {
+            //STop counter
+        } else { 
+           secondsCount += Time.deltaTime;
+            timerText.text = minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00");
+            if (secondsCount >= 60) {
+                secondsCount = 0;
+                minuteCount++;
+            } 
         }
     }
 }
