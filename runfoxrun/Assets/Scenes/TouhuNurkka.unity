@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 0
+  SpeedSound: {fileID: 0}
 --- !u!1 &95888180
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +348,7 @@ GameObject:
   - component: {fileID: 96130815}
   m_Layer: 0
   m_Name: Tree_02_LOD0 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,6 +439,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96130813}
   m_Mesh: {fileID: -8135553595718028330, guid: 4471b1f7f824e4d44887e1364c6fc61a, type: 3}
+--- !u!1001 &120259426
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3549189929803570590, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_Name
+      value: SoundsPack
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.008145809
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.76986194
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5534816
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 79577b6832dcfe74e81b2138ecf992ca, type: 3}
 --- !u!1 &152699021
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1528,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e289bf5debb17f6459818c207d781953, type: 3}
+--- !u!82 &374916187 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1834226167125730842, guid: 79577b6832dcfe74e81b2138ecf992ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 120259426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &466637809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1705,7 @@ GameObject:
   - component: {fileID: 583199225}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1749,6 +1824,12 @@ Transform:
   - {fileID: 32929423}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &715735072 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7932246100175790100, guid: 79577b6832dcfe74e81b2138ecf992ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 120259426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &780533092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2111,6 +2192,9 @@ MonoBehaviour:
     type: 3}
   isHitted: 0
   newHit: 0
+  HitSound: {fileID: 374916187}
+  RipSound: {fileID: 830783226}
+  JumpSound: {fileID: 715735072}
 --- !u!4 &785489429
 Transform:
   m_ObjectHideFlags: 0
@@ -2147,6 +2231,12 @@ MonoBehaviour:
   speedIncrease: 5
   isSpeedActive: 0
   baseSpeed: 3
+--- !u!82 &830783226 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4108328111946234490, guid: 79577b6832dcfe74e81b2138ecf992ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 120259426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &841895732
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,7 +2462,7 @@ GameObject:
   - component: {fileID: 863112371}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2581,7 +2671,7 @@ GameObject:
   - component: {fileID: 932199533}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3075,7 +3165,7 @@ GameObject:
   - component: {fileID: 1120893521}
   m_Layer: 0
   m_Name: Tree_02_LOD0 (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4414,7 +4504,7 @@ GameObject:
   - component: {fileID: 1891575456}
   m_Layer: 0
   m_Name: Tree_02_LOD0 (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4688,3 +4778,4 @@ SceneRoots:
   - {fileID: 1383578116}
   - {fileID: 229790074}
   - {fileID: 2120599293}
+  - {fileID: 120259426}
