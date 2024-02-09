@@ -11,7 +11,7 @@ public class UIControl : MonoBehaviour {
     public GameObject coinCountDisplay;
     public GameObject acornCountDisplay;
 
-    // Update is called once per frame
+
     void Update() {
         coinCountDisplay.GetComponent<Text>().text = "" + coinCount;
         acornCountDisplay.GetComponent<Text>().text = "" + acornCount;
