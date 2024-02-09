@@ -59,8 +59,10 @@ public class playerMovement : MonoBehaviour
         // Smoothly rotate towards the target rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotateSpeed);
 
-        cameraRootTransform.rotation = Quaternion.Euler (cameraRootTransform.localEulerAngles.x, 0f, 0f);
-
+        // Lock y and z rotation of the camera while preserving x rotation
+        Quaternion currentCameraRotation = cameraRootTransform.rotation;
+        Quaternion lockedRotation = Quaternion.Euler(currentCameraRotation.eulerAngles.x, 0f, 0f);
+        cameraRootTransform.rotation = lockedRotation;
         if (Input.GetKey(KeyCode.W))
         {
             if(isJumping == false)
