@@ -19,12 +19,15 @@ public class SlowBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check if player is hitted 
         if(player.GetComponent<playerMovement>().isHitted == true)
         {
+            // start timer when hitted 
             timer += Time.deltaTime;
+           //check if slow is added
             if (slowAdded==false)
             {
-                
+                // slows player movement speed forward and left and right also animation speed is slowed
                 player.GetComponent<playerMovement>().moveSpeed = 1;
                 player.GetComponent<playerMovement>().leftRightSpeed = 1;
                 anim.GetComponent<Animator>().SetFloat("speed", 0.5f);
@@ -33,9 +36,10 @@ public class SlowBehavior : MonoBehaviour
                 slowAdded = true;
                 Debug.Log("Slow alkoi");
             }
-     
+            // checks if player is hitted again 
             if (player.GetComponent<playerMovement>().newHit == true)
             {
+                // set timer back to 0 and keeps old slows
                 timer = 0f;
                 player.GetComponent<playerMovement>().moveSpeed = 1;
                 player.GetComponent<playerMovement>().leftRightSpeed = 1;
@@ -45,10 +49,11 @@ public class SlowBehavior : MonoBehaviour
                 player.GetComponent<playerMovement>().newHit = false;
                 Debug.Log("uusi slow");
             }
+            // check if player gets powerUp
             if (powerUp.GetComponent<CollectPowerUp>().powerUp == true )
             {
                 
-                player.GetComponent<playerMovement>().leftRightSpeed = 3;
+                // player animation is setted back to normal and powerUp clears slow effect off
                 anim.GetComponent<Animator>().SetFloat("speed", 1f);
                 player.GetComponent<playerMovement>().isHitted = false;
                 anim.GetComponent<Animator>().SetBool("isSlowed", false);
@@ -57,9 +62,10 @@ public class SlowBehavior : MonoBehaviour
                 slowAdded = false;
                 Debug.Log("slowin aikana otettu power up");
             }
+            // player has hitted object with power up and 3s has passed
             if (timer > 3f && player.GetComponent<PowerUpBehavior>().isSpeedActive)
             {
-                player.GetComponent<playerMovement>().leftRightSpeed = 3;
+                // setting normal animation speed and setting timer to 0
                 player.GetComponent<playerMovement>().isHitted = false;
                 anim.GetComponent<Animator>().SetFloat("speed", 1f);
                 timer = 0f;
@@ -69,8 +75,10 @@ public class SlowBehavior : MonoBehaviour
                 slowAdded = false;
                 Debug.Log("slow poistui speedi on powerupin varainen");
             }
+            // 3s has passed normally waiting
             if (timer > 3f)
             {
+                // setting normal movement speed and animations also setting timer to 0 
                 player.GetComponent<playerMovement>().moveSpeed = 3;
                 player.GetComponent<playerMovement>().leftRightSpeed = 3;
                 player.GetComponent<playerMovement>().isHitted = false;
