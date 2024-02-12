@@ -9,9 +9,16 @@ public class CollectPowerUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         powerUp = true;
-        this.gameObject.SetActive(false);
-        SpeedSound.Play();
+        if (powerUp==true)
+        {
+            other.GetComponent<PowerUpBehavior>().ActivateSpeed();
+            SpeedSound.Play();
+            powerUp = false;
+            this.gameObject.SetActive(false);
+        }
+       
     }
 
    

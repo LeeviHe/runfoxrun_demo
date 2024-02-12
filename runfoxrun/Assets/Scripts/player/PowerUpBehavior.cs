@@ -17,23 +17,9 @@ public class PowerUpBehavior : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-        // if power up is picked up
-        if(powerUp.GetComponent<CollectPowerUp>().powerUp == true)
-        {
-            // check if power up is already active
-            if (!isSpeedActive)
-            {
-                Debug.Log("Power up iffissä");
-                ActivateSpeed();
-            }
-            powerUp.GetComponent<CollectPowerUp>().powerUp = false;
-            Debug.Log("Power up done");
-        }
-    }
+
    //activate speed
-    void ActivateSpeed()
+    public void ActivateSpeed()
     {
         // forward movement speed
         this.gameObject.GetComponent<playerMovement>().moveSpeed = this.gameObject.GetComponent<playerMovement>().moveSpeed + speedIncrease;
