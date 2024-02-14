@@ -27,6 +27,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource HitSound;
     public AudioSource RipSound;
     public AudioSource JumpSound;
+    public GameObject cloudParticle;
 
 
     void Start()
@@ -132,6 +133,8 @@ public class playerMovement : MonoBehaviour
                 if (Health.health > 1) {
                     playerObject.GetComponent<Animator>().Play("Hit");
                     HitSound.Play();
+                    GameObject cloud = Instantiate(cloudParticle, transform.position, transform.rotation);
+                    Destroy(cloud, 2);
                     other.gameObject.SetActive(false);
                     Debug.Log("-1 hp");
                     Health.health--;
