@@ -27,6 +27,8 @@ public class CollectPowerUp : MonoBehaviour
             if (powerUp == true && id == 1)
             {
                 other.GetComponent<PowerUpBehavior>().ActivateFlying();
+                powerUp = false;
+                this.gameObject.SetActive(false);
                 Debug.Log("Tähän tulee lento");
             }
 
