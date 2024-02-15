@@ -66,7 +66,7 @@ public class playerMovement : MonoBehaviour
         cameraRootTransform.rotation = lockedRotation;
         if (Input.GetKey(KeyCode.W))
         {
-            if(isJumping == false)
+            if(isJumping == false && this.GetComponent<PowerUpBehavior>().isFlying == false)
             {
                 isJumping = true;
                 //playerObject.GetComponent<Animator>().Play("Fox_Jump");
@@ -74,6 +74,7 @@ public class playerMovement : MonoBehaviour
                 playerObject.GetComponent<Animator>().SetBool("comingDown", false);
                 JumpSound.Play();
                 StartCoroutine(JumpSequence());
+
             }
         }
         if(isJumping == true)
@@ -92,10 +93,46 @@ public class playerMovement : MonoBehaviour
 
             }
         }
+        // when flying power up is active
+        if (this.GetComponent<PowerUpBehavior>().isFlying == true)
+        {
+            // check if jump is active and cancels it
+            if (isJumping == true)
+            {
+                isJumping = false;
+                StopCoroutine(JumpSequence());
+                Debug.Log("Hyppy lopetettu");
+            }
+            // jump start is true fox will go up and forward
+            if (this.GetComponent<PowerUpBehavior>().jumpStart == true)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * 8f, Space.World);
+                transform.Translate(Vector3.forward * Time.deltaTime * 6f, Space.World);
+            }
+            // when gliding fox will only go forward and also checks if fox is moving and cancelling it
+            if (this.GetComponent<PowerUpBehavior>().isGliding == true)
+            {
+                if (playerObject.GetComponent<Animator>().GetBool("isMoving") ==true)
+                {
+                    playerObject.GetComponent<Animator>().SetBool("isMoving", false);
+                }
+                transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
+            }
+            // when fox is no longer gliding and not going up 
+            if (this.GetComponent<PowerUpBehavior>().isGliding == false && this.GetComponent<PowerUpBehavior>().jumpStart == false)
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * -8f, Space.World);
+                transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
+            }
+                
+            
+
+        }
+       
         
 
     }
-    IEnumerator JumpSequence()
+    public IEnumerator JumpSequence()
     {
         yield return new WaitForSeconds(0.45f);
         comingDown = true;

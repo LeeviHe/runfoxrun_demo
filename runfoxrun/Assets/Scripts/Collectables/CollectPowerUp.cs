@@ -6,17 +6,30 @@ public class CollectPowerUp : MonoBehaviour
 {
     public bool powerUp = false;
     public AudioSource SpeedSound;
+    public int id;
 
     private void OnTriggerEnter(Collider other)
     {
 
-        powerUp = true;
-        if (powerUp==true)
+       
+        if (powerUp==false)
         {
-            other.GetComponent<PowerUpBehavior>().ActivateSpeed();
-            SpeedSound.Play();
-            powerUp = false;
-            this.gameObject.SetActive(false);
+            powerUp=true;
+            // Speed PowerUp id is 0
+            if (powerUp==true && id==0)
+            {
+                other.GetComponent<PowerUpBehavior>().ActivateSpeed();
+                SpeedSound.Play();
+                powerUp = false;
+                this.gameObject.SetActive(false);
+            }
+            // Flying PowerUp id is 1
+            if (powerUp == true && id == 1)
+            {
+                other.GetComponent<PowerUpBehavior>().ActivateFlying();
+                Debug.Log("Tähän tulee lento");
+            }
+
         }
        
     }

@@ -13,12 +13,16 @@ public class PowerUpBehavior : MonoBehaviour
     public bool isSpeedActive = false;
     public float baseSpeed = 3;
     public float baseSpeedLeftAndRight = 3;
+    public bool isFlying = false;
+    public bool isGliding = false;
+    public bool jumpStart = false;
+
 
 
 
     // Update is called once per frame
 
-   //activate speed
+    //activate speed
     public void ActivateSpeed()
     {
         // forward movement speed
@@ -49,6 +53,51 @@ public class PowerUpBehavior : MonoBehaviour
         
 
         Debug.Log("Speedi loppu");
+
+    }
+
+    public void ActivateFlying()
+    {
+        
+        this.gameObject.GetComponent<playerMovement>().moveSpeed = this.gameObject.GetComponent<playerMovement>().moveSpeed + speedIncrease;
+        //left and right movement speed
+        this.gameObject.GetComponent<playerMovement>().leftRightSpeed = this.gameObject.GetComponent<playerMovement>().leftRightSpeed + speedIncrease;
+        thePlayer.GetComponent<Rigidbody>().useGravity=false;
+        StartCoroutine(FlyingSequence());
+    }
+    IEnumerator FlyingSequence()
+    {
+        isFlying = true;
+        jumpStart = true;
+        animatio.GetComponent<Animator>().SetBool("isMoving", false);
+        animatio.GetComponent<Animator>().SetBool("comingDown", false);
+        animatio.GetComponent<Animator>().SetBool("isJumping", true);
+        yield return new WaitForSeconds(0.5f);
+        jumpStart = false;
+        isGliding = true;
+        animatio.GetComponent<Animator>().SetBool("isMoving", false);
+        animatio.GetComponent<Animator>().SetBool("comingDown", false);
+        animatio.GetComponent<Animator>().SetBool("isJumping", false);
+        animatio.GetComponent<Animator>().SetBool("isGliding", true);
+        // adding particle system for speed boost 
+        Instantiate(particleEffect, thePlayer.gameObject.transform);
+        yield return new WaitForSeconds(5f);
+        this.gameObject.GetComponent<playerMovement>().moveSpeed = baseSpeed;
+        this.gameObject.GetComponent<playerMovement>().leftRightSpeed = baseSpeedLeftAndRight;
+        thePlayer.GetComponent<Rigidbody>().useGravity = true;
+        isGliding = false;
+        yield return new WaitForSeconds(0.5f);
+        animatio.GetComponent<Animator>().SetBool("isGliding", false);
+        animatio.GetComponent<Animator>().SetBool("comingDown", false);
+        animatio.GetComponent<Animator>().SetBool("isJumping", false);
+        animatio.GetComponent<Animator>().SetBool("isMoving", true);
+        isFlying = false;
+
+
+
+
+
+        Debug.Log("Flying loppu");
 
     }
 }
