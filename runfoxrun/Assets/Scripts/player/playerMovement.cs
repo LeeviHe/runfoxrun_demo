@@ -89,6 +89,7 @@ public class playerMovement : MonoBehaviour
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -jumpPower, Space.World);
                 transform.Translate(Vector3.forward * Time.deltaTime * 0.5f, Space.World);
+                Debug.Log("hyppyssä alas päin");
 
 
             }
@@ -116,13 +117,22 @@ public class playerMovement : MonoBehaviour
                 {
                     playerObject.GetComponent<Animator>().SetBool("isMoving", false);
                 }
+                if (transform.position.y < 3.5f)
+                {
+                    
+                    transform.Translate(Vector3.up * Time.deltaTime * 2f, Space.World);
+                    Debug.Log("nostetta lisätään");
+                }
+                
                 transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
+               
             }
             // when fox is no longer gliding and not going up 
             if (this.GetComponent<PowerUpBehavior>().isGliding == false && this.GetComponent<PowerUpBehavior>().jumpStart == false)
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -8f, Space.World);
                 transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
+                Debug.Log("lennossa alas päin");
             }
                 
             
