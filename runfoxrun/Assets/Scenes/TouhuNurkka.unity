@@ -1828,6 +1828,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.032, y: -0.044, z: 0.126}
+--- !u!82 &490469284 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8879219130577346411, guid: 79577b6832dcfe74e81b2138ecf992ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 218942695}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &506592811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,8 +1978,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraRootTransform: {fileID: 557888079}
-  moveSpeed: 5
-  leftRightSpeed: 5
+  moveSpeed: 3
+  leftRightSpeed: 3
   isJumping: 0
   comingDown: 0
   playerObject: {fileID: 1328666094}
@@ -2792,7 +2798,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 0
-  SpeedSound: {fileID: 2015468303}
+  PowerUpSound: {fileID: 0}
+  FeatherSound: {fileID: 0}
   id: 0
 --- !u!4 &848316772 stripped
 Transform:
@@ -4696,7 +4703,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 0
-  SpeedSound: {fileID: 2015468303}
+  PowerUpSound: {fileID: 2015468303}
+  FeatherSound: {fileID: 0}
   id: 0
 --- !u!4 &1757783999 stripped
 Transform:
@@ -5218,7 +5226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 0
-  SpeedSound: {fileID: 2015468303}
+  PowerUpSound: {fileID: 0}
+  FeatherSound: {fileID: 0}
   id: 0
 --- !u!4 &2039242360 stripped
 Transform:
@@ -5245,7 +5254,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUp: 0
-  SpeedSound: {fileID: 2015468303}
+  PowerUpSound: {fileID: 2015468303}
+  FeatherSound: {fileID: 490469284}
   id: 1
 --- !u!65 &2040935712
 BoxCollider:
