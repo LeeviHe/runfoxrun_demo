@@ -20,7 +20,7 @@ public class Health : MonoBehaviour {
 
         if (health <= 0 && !gameOverTriggered) { 
             GameNowOver();
-                    Debug.Log("Health hit 0");
+            Debug.Log("Health hit 0");
         }
 
         if (health > numOfHearts) { 
@@ -39,15 +39,15 @@ public class Health : MonoBehaviour {
             } else {
                 hearts[i].enabled = false;
             }
-        } 
         }
+    }
         
-         void GameNowOver() {
+    void GameNowOver() {
         gameOverTriggered = true;
         if (gameOverUI != null) {
             gameOverUI.SetActive(true);
         }
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;  
     }
         
 }

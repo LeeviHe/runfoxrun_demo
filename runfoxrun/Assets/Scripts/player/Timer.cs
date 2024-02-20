@@ -16,7 +16,7 @@ public class Timer : MonoBehaviour {
         // Set timer UI
         
         if (Health.health == 0) {
-            //STop counter
+            //Stop counter
         } else { 
            secondsCount += Time.deltaTime;
             timerText.text = minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00");

@@ -195,6 +195,7 @@ public class playerMovement : MonoBehaviour
                 } // player doesn't have enough health -> player loses
                 else {
                     Health.health = 0;
+                    thePlayer.GetComponent<playerMovement>().enabled = false;
                     playerObject.GetComponent<Animator>().Play("Fox_Falling");
                     RipSound.Play();
                 }
