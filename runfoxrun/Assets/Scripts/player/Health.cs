@@ -13,7 +13,15 @@ public class Health : MonoBehaviour {
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public GameObject gameOverUI;
+    private bool gameOverTriggered = false;
+
     private void Update() {
+
+        if (health <= 0 && !gameOverTriggered) { 
+            GameNowOver();
+                    Debug.Log("Health hit 0");
+        }
 
         if (health > numOfHearts) { 
             health = numOfHearts;
@@ -33,4 +41,13 @@ public class Health : MonoBehaviour {
             }
         } 
         }
+        
+         void GameNowOver() {
+        gameOverTriggered = true;
+        if (gameOverUI != null) {
+            gameOverUI.SetActive(true);
+        }
+        Time.timeScale = 0f;
+    }
+        
 }

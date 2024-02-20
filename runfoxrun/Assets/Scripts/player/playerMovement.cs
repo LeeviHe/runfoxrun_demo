@@ -89,7 +89,7 @@ public class playerMovement : MonoBehaviour
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -jumpPower, Space.World);
                 transform.Translate(Vector3.forward * Time.deltaTime * 0.5f, Space.World);
-                Debug.Log("hyppyssä alas päin");
+                Debug.Log("hyppyssï¿½ alas pï¿½in");
 
 
             }
@@ -121,7 +121,7 @@ public class playerMovement : MonoBehaviour
                 {
                     
                     transform.Translate(Vector3.up * Time.deltaTime * 2f, Space.World);
-                    Debug.Log("nostetta lisätään");
+                    Debug.Log("nostetta lisï¿½tï¿½ï¿½n");
                 }
                 
                 transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
@@ -132,7 +132,7 @@ public class playerMovement : MonoBehaviour
             {
                 transform.Translate(Vector3.up * Time.deltaTime * -8f, Space.World);
                 transform.Translate(Vector3.forward * Time.deltaTime * 3f, Space.World);
-                Debug.Log("lennossa alas päin");
+                Debug.Log("lennossa alas pï¿½in");
             }
                 
             
@@ -195,7 +195,6 @@ public class playerMovement : MonoBehaviour
                 } // player doesn't have enough health -> player loses
                 else {
                     Health.health = 0;
-                    thePlayer.GetComponent<playerMovement>().enabled = false;
                     playerObject.GetComponent<Animator>().Play("Fox_Falling");
                     RipSound.Play();
                 }
