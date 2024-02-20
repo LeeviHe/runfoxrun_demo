@@ -79,8 +79,8 @@ public class SlowBehavior : MonoBehaviour
             if (timer > 3f)
             {
                 // setting normal movement speed and animations also setting timer to 0 
-                player.GetComponent<playerMovement>().moveSpeed = 3;
-                player.GetComponent<playerMovement>().leftRightSpeed = 3;
+                player.GetComponent<playerMovement>().moveSpeed = player.GetComponent<PowerUpBehavior>().baseSpeed;
+                player.GetComponent<playerMovement>().leftRightSpeed = player.GetComponent<PowerUpBehavior>().baseSpeedLeftAndRight;
                 player.GetComponent<playerMovement>().isHitted = false;
                 anim.GetComponent<Animator>().SetFloat("speed", 1f);
                 timer = 0f;
