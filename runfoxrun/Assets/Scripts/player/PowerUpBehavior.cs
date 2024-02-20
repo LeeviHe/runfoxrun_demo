@@ -34,7 +34,7 @@ public class PowerUpBehavior : MonoBehaviour
         animatio.GetComponent<Animator>().SetFloat("speed", 1.5f);
      
 
-        Debug.Log("Speediä");
+        Debug.Log("Speediï¿½");
         Debug.Log(this.gameObject.GetComponent<playerMovement>().moveSpeed);
         StartCoroutine(DeActivateSpeed());
     }
@@ -81,7 +81,7 @@ public class PowerUpBehavior : MonoBehaviour
         animatio.GetComponent<Animator>().SetBool("isGliding", true);
         // adding particle system for speed boost 
         Instantiate(particleEffect, thePlayer.gameObject.transform);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         this.gameObject.GetComponent<playerMovement>().moveSpeed = baseSpeed;
         this.gameObject.GetComponent<playerMovement>().leftRightSpeed = baseSpeedLeftAndRight;
         thePlayer.GetComponent<Rigidbody>().useGravity = true;
