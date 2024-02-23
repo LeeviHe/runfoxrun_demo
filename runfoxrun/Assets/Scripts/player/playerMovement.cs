@@ -198,6 +198,8 @@ public class playerMovement : MonoBehaviour
                     thePlayer.GetComponent<playerMovement>().enabled = false;
                     playerObject.GetComponent<Animator>().Play("Fox_Falling");
                     RipSound.Play();
+                    //yield return new WaitForSeconds(0.5f);
+                    FindObjectOfType<SoundEffects>().DeathSound();
                 }
             } else {
                 Debug.Log("Empty collision trigger");
