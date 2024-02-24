@@ -10,8 +10,14 @@ EditorBuildSettings:
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 0
     path: Assets/Scenes/SamulinTesti.unity
-    guid: 4ef4a4546faa4634fb49ade94bfff85f
+    guid: d63c2e0a42be69642a7edf72d65ea048
   - enabled: 0
     path: Assets/Scenes/GameOver.unity
     guid: dfccba65ae6c661459e801a6d6a366cf
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2fc33989f1aa1564b8fca2a801669b72
+  - enabled: 1
+    path: Assets/Scenes/MappiNurkkaus.unity
+    guid: 665093410f0479347971d4b2188febb1
   m_configObjects: {}
