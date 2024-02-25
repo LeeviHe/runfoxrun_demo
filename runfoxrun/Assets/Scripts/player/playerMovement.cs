@@ -28,6 +28,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource RipSound;
     public AudioSource JumpSound;
     public GameObject cloudParticle;
+    public GameObject starParticle;
 
     public static bool chestCollected = false;
 
@@ -187,6 +188,8 @@ public class playerMovement : MonoBehaviour
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 playerObject.GetComponent<Animator>().Play("Fox_Sit");
                 playerObject.transform.Rotate(0,180,0);
+                GameObject stars = Instantiate(starParticle,transform.position, starParticle.gameObject.transform.rotation);
+                Destroy(stars, 60);
             } else {
                 if (other.gameObject.CompareTag("Obstacle")) {
                     //If player has health -> hit animation and -1 health
