@@ -61,7 +61,7 @@ PrefabInstance:
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81,
         type: 3}
       propertyPath: m_Name
-      value: Rock_05 Variant
+      value: BigRock
       objectReference: {fileID: 0}
     - target: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81,
         type: 3}
@@ -76,7 +76,7 @@ PrefabInstance:
     - target: {fileID: 7029523610040634915, guid: a778b631c6253a04899cb31bad047c81,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

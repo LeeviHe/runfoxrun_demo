@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectable
   - Obstacle
+  - Insta-Kill
+  - Chest
   layers:
   - Default
   - TransparentFX

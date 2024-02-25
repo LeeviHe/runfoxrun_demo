@@ -59,7 +59,6 @@ MonoBehaviour:
   isJumping: 0
   comingDown: 0
   playerObject: {fileID: 6403159156471084117}
-  thePlayer: {fileID: 2929218623944208172}
   jumpPower: 3
   foxCoinPrefab: {fileID: 3199523569651007878, guid: fdb9b4cef52a98744b191134a9e13d00,
     type: 3}

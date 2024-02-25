@@ -1,3 +1,4 @@
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,7 @@ public class Timer : MonoBehaviour {
     public void UpdateTimerUI() {
         // Set timer UI
         
-        if (Health.health == 0) {
+        if (Health.health == 0 || playerMovement.chestCollected == true) {
             //Stop counter
         } else { 
            secondsCount += Time.deltaTime;

@@ -29,6 +29,8 @@ public class playerMovement : MonoBehaviour
     public AudioSource JumpSound;
     public GameObject cloudParticle;
 
+    public static bool chestCollected = false;
+
 
     void Start()
     {
@@ -175,34 +177,46 @@ public class playerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Collectable")) {
             Debug.Log("Collectable collected!");
         } else {
-            if (other.gameObject.CompareTag("Obstacle")) {
-                //If player has health -> hit animation and -1 health
-                if (Health.health > 1) {
-                    playerObject.GetComponent<Animator>().Play("Hit");
-                    HitSound.Play();
-                    GameObject cloud = Instantiate(cloudParticle, transform.position, transform.rotation);
-                    Destroy(cloud, 2);
-                    other.gameObject.SetActive(false);
-                    Debug.Log("-1 hp");
-                    Health.health--;
-                    if (isHitted == true) {
-                        newHit = true;
-                    } else {
-                        isHitted = true;
-                    }
-
-                    StartCoroutine(HitSequence());
-                } // player doesn't have enough health -> player loses
-                else {
-                    Health.health = 0;
-                    thePlayer.GetComponent<playerMovement>().enabled = false;
-                    playerObject.GetComponent<Animator>().Play("Fox_Falling");
-                    RipSound.Play();
-                    //yield return new WaitForSeconds(0.5f);
-                    FindObjectOfType<SoundEffects>().DeathSound();
-                }
+            if (other.gameObject.CompareTag("Insta-Kill")) {
+                Health.health = 0;
+                thePlayer.GetComponent<playerMovement>().enabled = false;
+                Destroy(thePlayer.GetComponent<Rigidbody>());
+                playerObject.SetActive(false);
+            } else if (other.gameObject.CompareTag("Chest")) {
+                chestCollected = true;
+                thePlayer.GetComponent<playerMovement>().enabled = false;
+                playerObject.GetComponent<Animator>().Play("Fox_Sit");
+                playerObject.transform.Rotate(0,180,0);
             } else {
-                Debug.Log("Empty collision trigger");
+                if (other.gameObject.CompareTag("Obstacle")) {
+                    //If player has health -> hit animation and -1 health
+                    if (Health.health > 1) {
+                        playerObject.GetComponent<Animator>().Play("Hit");
+                        HitSound.Play();
+                        GameObject cloud = Instantiate(cloudParticle, transform.position, transform.rotation);
+                        Destroy(cloud, 2);
+                        other.gameObject.SetActive(false);
+                        Debug.Log("-1 hp");
+                        Health.health--;
+                        if (isHitted == true) {
+                            newHit = true;
+                        } else {
+                            isHitted = true;
+                        }
+
+                        StartCoroutine(HitSequence());
+                    } // player doesn't have enough health -> player loses
+                    else {
+                        Health.health = 0;
+                        thePlayer.GetComponent<playerMovement>().enabled = false;
+                        playerObject.GetComponent<Animator>().Play("Fox_Falling");
+                        RipSound.Play();
+                        //yield return new WaitForSeconds(0.5f);
+                        FindObjectOfType<SoundEffects>().DeathSound();
+                    }
+                } else {
+                    Debug.Log("Empty collision trigger");
+                }
             }
         } 
     }       
