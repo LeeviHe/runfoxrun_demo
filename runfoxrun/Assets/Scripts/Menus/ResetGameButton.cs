@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class TryAgainButton : MonoBehaviour
 {
     public GameOver gameOver;
+    public Completed completed;
 
     public void OnTryAgainButtonClick()
     {
@@ -14,6 +15,11 @@ public class TryAgainButton : MonoBehaviour
             gameOver.DeactivateGameOverUI(); 
             gameOver.RestartGame(); 
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        } 
+        }
+        if (completed != null) {
+            completed.DeactivateCompletedUI();
+            completed.RestartGame();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }

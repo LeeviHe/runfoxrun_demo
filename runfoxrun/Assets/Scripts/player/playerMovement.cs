@@ -29,13 +29,13 @@ public class playerMovement : MonoBehaviour
     public GameObject cloudParticle;
     public GameObject starParticle;
     public GameObject chestReward;
+    public GameObject completedUI;
 
     public static bool chestCollected = false;
 
-
     void Start()
     {
-        
+        chestCollected=false;
     }
 
     // Update is called once per frame
@@ -145,6 +145,15 @@ public class playerMovement : MonoBehaviour
         
 
     }
+
+    void IsCompleted() {
+        chestCollected = true;
+        if (completedUI != null) {
+            completedUI.SetActive(true);
+        }
+        //Time.timeScale = 0f;  
+    }
+
     public IEnumerator JumpSequence()
     {
         yield return new WaitForSeconds(0.45f);
@@ -184,13 +193,13 @@ public class playerMovement : MonoBehaviour
                 Destroy(thePlayer.GetComponent<Rigidbody>());
                 playerObject.SetActive(false);
             } else if (other.gameObject.CompareTag("Chest")) {
-                chestCollected = true;
+                IsCompleted();          
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 playerObject.GetComponent<Animator>().Play("Fox_Sit");
-                playerObject.transform.Rotate(0,180,0);
+                playerObject.transform.Rotate(0, 180, 0);
                 transform.position = new Vector3(2f, transform.position.y, transform.position.z);
                 chestReward.GetComponent<Animator>().Play("Chest_Open_Close");
-                GameObject stars = Instantiate(starParticle,other.gameObject.transform.position, starParticle.gameObject.transform.rotation);
+                GameObject stars = Instantiate(starParticle, other.gameObject.transform.position, starParticle.gameObject.transform.rotation);
                 Destroy(stars, 60);
             } else {
                 if (other.gameObject.CompareTag("Obstacle")) {
@@ -224,5 +233,5 @@ public class playerMovement : MonoBehaviour
                 }
             }
         } 
-    }       
+    }
 }

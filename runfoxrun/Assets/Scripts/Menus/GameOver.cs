@@ -19,7 +19,6 @@ public class GameOver : MonoBehaviour
         {
             isGameOver = true;
             SetGameOverUIActive(true);
-            Time.timeScale = 0f;
         }
     }
 

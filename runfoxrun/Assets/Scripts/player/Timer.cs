@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
     public Text timerText;
+    public Text completedTimerText;
 
     private float secondsCount;
     private int minuteCount;
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour {
         
         if (Health.health == 0 || playerMovement.chestCollected == true) {
             //Stop counter
+            completedTimerText.text = minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00");
         } else { 
            secondsCount += Time.deltaTime;
             timerText.text = minuteCount.ToString("00") + ":" + ((int)secondsCount).ToString("00");

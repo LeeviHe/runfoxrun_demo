@@ -10,6 +10,8 @@ public class UIControl : MonoBehaviour {
     public static int playerHealth = 3;
     public GameObject coinCountDisplay;
     public GameObject acornCountDisplay;
+    public GameObject completedCoinCountDisplay;
+    public GameObject completedAcornCountDisplay;
 
     private void Start() {
         coinCount = 0;
@@ -18,5 +20,7 @@ public class UIControl : MonoBehaviour {
     void Update() {
         coinCountDisplay.GetComponent<Text>().text = "" + coinCount;
         acornCountDisplay.GetComponent<Text>().text = "" + acornCount;
+        completedCoinCountDisplay.GetComponent<Text>().text = "" + coinCount;
+        completedAcornCountDisplay.GetComponent<Text>().text = "" + acornCount;
     }
 }
