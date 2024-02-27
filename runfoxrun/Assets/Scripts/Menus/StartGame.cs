@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
 
       public void LoadMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("TominKokeiluNurkka");
         FindObjectOfType<SoundEffects>().MainMenuMusic();
         Debug.Log("Main menu musiikki soi");
     }
