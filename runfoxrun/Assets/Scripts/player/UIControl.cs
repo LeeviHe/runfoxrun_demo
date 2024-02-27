@@ -11,7 +11,10 @@ public class UIControl : MonoBehaviour {
     public GameObject coinCountDisplay;
     public GameObject acornCountDisplay;
 
-
+    private void Start() {
+        coinCount = 0;
+        acornCount = 0;
+    }
     void Update() {
         coinCountDisplay.GetComponent<Text>().text = "" + coinCount;
         acornCountDisplay.GetComponent<Text>().text = "" + acornCount;
