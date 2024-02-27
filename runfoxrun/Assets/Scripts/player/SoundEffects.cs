@@ -5,36 +5,50 @@ using UnityEngine.Rendering;
 
 public class SoundEffects : MonoBehaviour {
 
+    public AudioSource mainMenuMusic;
     public AudioSource levelMusic;
     public AudioSource deathSong;
 
-    public bool levelSong = true;
+    public bool MainMenuSong = false;
+    public bool LevelSong = false;
     public bool DeathSong = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void MainMenuMusic()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (deathSong.isPlaying) 
+        { 
+            deathSong.Stop();
+        }
+        if (!mainMenuMusic.isPlaying && MainMenuSong == false) 
+        { 
+            mainMenuMusic.Play();
+            MainMenuSong = true;
+        }
+        else if (MainMenuSong == false) 
+        {
+            mainMenuMusic.Play();
+            MainMenuSong = true;
+        } 
     }
 
     public void LevelMusic()
     {
-        levelSong = true;
-        DeathSong = false;
-        levelMusic.Play();
+        if (mainMenuMusic.isPlaying) 
+        { 
+            mainMenuMusic.Stop();
+        }
+        if (!levelMusic.isPlaying && LevelSong == false)
+        {
+            levelMusic.Play();
+            LevelSong = true;
+        }
 
     }
 
     public void DeathSound()
     {
         if (levelMusic.isPlaying) 
-            levelSong = false;
+            LevelSong = false;
         { 
             levelMusic.Stop();
         }  
