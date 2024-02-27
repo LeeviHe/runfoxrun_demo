@@ -29,6 +29,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource JumpSound;
     public GameObject cloudParticle;
     public GameObject starParticle;
+    public GameObject chestReward;
 
     public static bool chestCollected = false;
 
@@ -188,7 +189,9 @@ public class playerMovement : MonoBehaviour
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 playerObject.GetComponent<Animator>().Play("Fox_Sit");
                 playerObject.transform.Rotate(0,180,0);
-                GameObject stars = Instantiate(starParticle,transform.position, starParticle.gameObject.transform.rotation);
+                transform.position = new Vector3(2f, transform.position.y, transform.position.z);
+                chestReward.GetComponent<Animator>().Play("Chest_Open_Close");
+                GameObject stars = Instantiate(starParticle,other.gameObject.transform.position, starParticle.gameObject.transform.rotation);
                 Destroy(stars, 60);
             } else {
                 if (other.gameObject.CompareTag("Obstacle")) {

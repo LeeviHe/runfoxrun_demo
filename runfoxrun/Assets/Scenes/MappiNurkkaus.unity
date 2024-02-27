@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42874587, g: 0.43774456, b: 0.42747244, a: 1}
+  m_IndirectSpecularColor: {r: 0.428811, g: 0.43772367, b: 0.42747205, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20266,6 +20266,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23e5a8a12155144e9e952c441949ae7, type: 3}
+--- !u!1 &1213961255 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4114452649147320811, guid: 337bcbd77a4bf074a86b89acf57d821d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2181326170004320271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1214430501 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 2100532672852994855, guid: 79577b6832dcfe74e81b2138ecf992ca,
@@ -36563,6 +36569,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
+      propertyPath: chestReward
+      value: 
+      objectReference: {fileID: 1213961255}
+    - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
+        type: 3}
       propertyPath: starParticle
       value: 
       objectReference: {fileID: 728049711146381459, guid: 1ceaf18247ab5a24282a8b902bccd0a3,
@@ -36627,6 +36638,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 2175114793316839802, guid: 9251d45c2454bb743a51142b0cdcf889,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2520661666674023463, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
