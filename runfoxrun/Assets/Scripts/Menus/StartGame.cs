@@ -7,10 +7,14 @@ public class SceneLoader : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene("MappiNurkkaus");
+        FindObjectOfType<SoundEffects>().LevelMusic();
+        Debug.Log("Pelimusiikki soi");
     }
 
       public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+        FindObjectOfType<SoundEffects>().MainMenuMusic();
+        Debug.Log("Main menu musiikki soi");
     }
 }
