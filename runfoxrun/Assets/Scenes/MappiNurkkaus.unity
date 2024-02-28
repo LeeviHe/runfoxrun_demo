@@ -38291,8 +38291,13 @@ PrefabInstance:
       objectReference: {fileID: 646712686}
     - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
+      propertyPath: isJumping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
+        type: 3}
       propertyPath: moveSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
@@ -38324,7 +38329,7 @@ PrefabInstance:
     - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
       propertyPath: leftRightSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 879416962016850911, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
@@ -38490,12 +38495,12 @@ PrefabInstance:
     - target: {fileID: 4104012947841309899, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
       propertyPath: baseSpeed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4104012947841309899, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
       propertyPath: baseSpeedLeftAndRight
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4810021416609623519, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
