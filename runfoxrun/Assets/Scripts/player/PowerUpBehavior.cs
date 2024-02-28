@@ -11,8 +11,8 @@ public class PowerUpBehavior : MonoBehaviour
     public float duration = 5f;
     public float speedIncrease = 5f;
     public bool isSpeedActive = false;
-    public float baseSpeed = 3;
-    public float baseSpeedLeftAndRight = 3;
+    public float baseSpeed;
+    public float baseSpeedLeftAndRight;
     public bool isFlying = false;
     public bool isGliding = false;
     public bool jumpStart = false;
