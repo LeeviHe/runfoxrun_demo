@@ -26,6 +26,7 @@ public class playerMovement : MonoBehaviour
     public AudioSource HitSound;
     public AudioSource RipSound;
     public AudioSource JumpSound;
+    public AudioSource VictorySound;
     public GameObject cloudParticle;
     public GameObject starParticle;
     public GameObject chestReward;
@@ -142,7 +143,7 @@ public class playerMovement : MonoBehaviour
 
         }
        
-        
+
 
     }
 
@@ -189,6 +190,7 @@ public class playerMovement : MonoBehaviour
         } else {
             if (other.gameObject.CompareTag("Insta-Kill")) {
                 Health.health = 0;
+                FindObjectOfType<SoundEffects>().DeathSound();
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 Destroy(thePlayer.GetComponent<Rigidbody>());
                 playerObject.SetActive(false);
@@ -197,6 +199,8 @@ public class playerMovement : MonoBehaviour
                 thePlayer.GetComponent<playerMovement>().enabled = false;
                 playerObject.GetComponent<Animator>().Play("Fox_Sit");
                 playerObject.transform.Rotate(0, 180, 0);
+                VictorySound.Play();
+                FindObjectOfType<SoundEffects>().EndingSound();
                 transform.position = new Vector3(2f, transform.position.y, transform.position.z);
                 chestReward.GetComponent<Animator>().Play("Chest_Open_Close");
                 GameObject stars = Instantiate(starParticle, other.gameObject.transform.position, starParticle.gameObject.transform.rotation);

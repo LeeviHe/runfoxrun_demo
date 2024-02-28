@@ -8,10 +8,12 @@ public class SoundEffects : MonoBehaviour {
     public AudioSource mainMenuMusic;
     public AudioSource levelMusic;
     public AudioSource deathSong;
+    public AudioSource endingMusic;
 
     public bool MainMenuSong = false;
     public bool LevelSong = false;
     public bool DeathSong = false;
+    public bool EndingSong = false;
 
     public void MainMenuMusic()
     {
@@ -58,5 +60,19 @@ public class SoundEffects : MonoBehaviour {
             DeathSong = true;
         }
 
+    }
+
+    public void EndingSound()
+    {
+        if (levelMusic.isPlaying)
+            LevelSong = false;
+        {
+            levelMusic.Stop();
+        }
+        if (!endingMusic.isPlaying && EndingSong == false)
+        {
+            endingMusic.Play();
+            EndingSong = true;
+        }
     }
 }

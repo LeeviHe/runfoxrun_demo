@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.42874587, g: 0.43774456, b: 0.42747244, a: 1}
+  m_IndirectSpecularColor: {r: 0.42899287, g: 0.437724, b: 0.42747706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11724,6 +11724,16 @@ PrefabInstance:
       propertyPath: mainMenuMusic
       value: 
       objectReference: {fileID: 1111685019}
+    - target: {fileID: 2210683110439727803, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256928925517685357, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 332.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3549189929803570590, guid: 79577b6832dcfe74e81b2138ecf992ca,
         type: 3}
       propertyPath: m_Name
@@ -11777,6 +11787,21 @@ PrefabInstance:
     - target: {fileID: 5312585287351595774, guid: 79577b6832dcfe74e81b2138ecf992ca,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125303199340193128, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125303199340193128, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 359e585099653ee4b8fcae0f9ea47918, type: 3}
+    - target: {fileID: 9125303199340193128, guid: 79577b6832dcfe74e81b2138ecf992ca,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -13199,6 +13224,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3356751432537613521, guid: ffbddc4ef9676cc419e81e06aaa836d8,
     type: 3}
   m_PrefabInstance: {fileID: 726193445}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &729797072 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2210683110439727803, guid: 79577b6832dcfe74e81b2138ecf992ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 646712685}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &730691721
 PrefabInstance:
@@ -37874,6 +37905,11 @@ PrefabInstance:
       objectReference: {fileID: 1936976584}
     - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
+      propertyPath: VictorySound
+      value: 
+      objectReference: {fileID: 729797072}
+    - target: {fileID: 608037363145804897, guid: 9251d45c2454bb743a51142b0cdcf889,
+        type: 3}
       propertyPath: starParticle
       value: 
       objectReference: {fileID: 728049711146381459, guid: 1ceaf18247ab5a24282a8b902bccd0a3,
@@ -37962,7 +37998,7 @@ PrefabInstance:
     - target: {fileID: 3097714578211994188, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3097714578211994188, guid: 9251d45c2454bb743a51142b0cdcf889,
         type: 3}
