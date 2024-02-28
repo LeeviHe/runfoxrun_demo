@@ -10,9 +10,9 @@ public class playerMovement : MonoBehaviour
     public Transform cameraRootTransform; //player camera root
 
     // puclic variant for movementspeed can be changed in unity editor
-    public float moveSpeed = 3;
+    public float moveSpeed;
     // public variant for left or right movementspeed
-    public float leftRightSpeed = 4;
+    public float leftRightSpeed;
     // Start is called before the first frame update
     public bool isJumping = false;
     public bool comingDown = false;
@@ -36,7 +36,8 @@ public class playerMovement : MonoBehaviour
 
     void Start()
     {
-        chestCollected=false;
+        Application.targetFrameRate = 300;
+        chestCollected =false;
     }
 
     // Update is called once per frame
